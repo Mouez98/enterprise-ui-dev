@@ -20,6 +20,22 @@ jobs:
       - run: npm run format:fix
       - run: npm ci
       - run: npm test
+      
+  check-formatting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci
+        name: Install node nodules from npm
+      - run: npm run format:fix
+        name: Check for formatting with prettier
 
   build:
     runs-on: ubuntu-latest
