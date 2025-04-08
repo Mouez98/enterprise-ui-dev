@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Frame from '$components/frame';
 
 type CounterProps = {
@@ -7,6 +7,10 @@ type CounterProps = {
 
 const Counter = ({ initialCount = 0 }: CounterProps) => {
   const [count, setCount] = useState(initialCount);
+
+  useEffect(() => {
+    setCount(initialCount);
+  }, [initialCount]);
 
   return (
     <Frame className="text-center">

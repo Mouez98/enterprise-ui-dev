@@ -1,5 +1,14 @@
-export {};
+import {
+  render as renderComponent,
+  RenderOptions,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
-/**
- * For a complete example, see: test/utilities.ts
- */
+export const render = (ui: React.ReactElement, options?: RenderOptions) => {
+  const result = renderComponent(ui, options);
+  const user = userEvent.setup();
+  return {
+    ...result,
+    user,
+  };
+};
