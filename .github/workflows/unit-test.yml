@@ -50,10 +50,8 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-  check-coverage:
+  coverage:
     runs-on: ubuntu-latest
-    needs: [unit-test, build]
-
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node
@@ -62,9 +60,9 @@ jobs:
           node-version: 18
           cache: 'npm'
       - run: npm ci
-      - run: npm test -- --coverage
-      - name: Archive coverage
-        uses: actions/upload-artifact@v3
+      - run: npm test -- --coverage --run
+      - uses: actions/upload-artifact@v3
+        name: Archive coverage report
         with:
           name: coverage-report
           path: coverage
