@@ -62,8 +62,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm test -- --coverage
-      - uses: actions/upload-artifact@v3
-        name: Archive coverage
+      - name: Archive coverage
+        uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: coverage

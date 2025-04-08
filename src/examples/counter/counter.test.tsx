@@ -9,7 +9,7 @@ test('it should render the component', () => {
 test('it should increment when the "Increment" button is pressed', async () => {
   const { user } = render(<Counter />);
   const currentCount = screen.getByTestId('current-count');
-  const button = screen.getByRole('button', { name: '  Increment' });
+  const button = screen.getByRole('button', { name: 'Increment' });
   await user.click(button);
   expect(currentCount).toHaveTextContent('1');
   fireEvent.click(button);
